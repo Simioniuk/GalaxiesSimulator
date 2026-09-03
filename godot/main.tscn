@@ -1,0 +1,230 @@
+[gd_scene format=3 uid="uid://cwfj3522btlr4"]
+
+[ext_resource type="Script" uid="uid://ba2ik8b5yjr3r" path="res://cameraController.gd" id="1_0xm2m"]
+[ext_resource type="Script" uid="uid://cx30nxkybu0qs" path="res://render.gd" id="1_ig7tw"]
+[ext_resource type="Material" uid="uid://cggwb6wkr1o4b" path="res://sky.tres" id="3_1bvp3"]
+[ext_resource type="Script" uid="uid://i8aa5pqoluws" path="res://uiManager.gd" id="3_h2yge"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0xm2m"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_h2yge"]
+material = SubResource("StandardMaterial3D_0xm2m")
+
+[sub_resource type="MultiMesh" id="MultiMesh_ig7tw"]
+transform_format = 1
+mesh = SubResource("SphereMesh_h2yge")
+
+[sub_resource type="Sky" id="Sky_lquwl"]
+sky_material = ExtResource("3_1bvp3")
+radiance_size = 5
+
+[sub_resource type="Environment" id="Environment_0xm2m"]
+background_mode = 2
+sky = SubResource("Sky_lquwl")
+glow_enabled = true
+glow_intensity = 7.18
+glow_bloom = 0.77
+glow_hdr_threshold = 0.6
+
+[node name="Node3D" type="Node3D" unique_id=786478224]
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1469096851]
+transform = Transform3D(1, 0, 0, 0, 0.9049162, 0.42558977, 0, -0.42558977, 0.9049162, 0, 6.3752484, 12)
+script = ExtResource("1_0xm2m")
+movement_speed = 20.0
+
+[node name="MultiMeshInstance3D" type="MultiMeshInstance3D" parent="." unique_id=733576577]
+multimesh = SubResource("MultiMesh_ig7tw")
+script = ExtResource("1_ig7tw")
+density = 2.5
+N = 5
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1774645447]
+environment = SubResource("Environment_0xm2m")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=344793135]
+position = Vector2(6, 8)
+script = ExtResource("3_h2yge")
+
+[node name="density" type="SpinBox" parent="CanvasModulate" unique_id=1713704442]
+offset_left = 15.0
+offset_top = 30.0
+offset_right = 101.5
+offset_bottom = 61.0
+step = 0.01
+value = 2.5
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="CanvasModulate/density" unique_id=1804887228]
+layout_mode = 0
+offset_left = 6.0
+offset_top = -24.0
+offset_right = 65.0
+offset_bottom = -1.0
+text = "Density"
+
+[node name="size" type="SpinBox" parent="CanvasModulate" unique_id=1899744068]
+offset_left = 115.0
+offset_top = 30.0
+offset_right = 201.5
+offset_bottom = 61.0
+step = 0.01
+value = 10.0
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="CanvasModulate/size" unique_id=1202810432]
+layout_mode = 0
+offset_left = 6.0
+offset_top = -24.0
+offset_right = 65.0
+offset_bottom = -1.0
+text = "Size"
+
+[node name="n" type="SpinBox" parent="CanvasModulate" unique_id=1130353918]
+offset_left = 11.0
+offset_top = 91.0
+offset_right = 97.5
+offset_bottom = 122.0
+value = 5.0
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="CanvasModulate/n" unique_id=813443870]
+layout_mode = 0
+offset_left = 6.0
+offset_top = -24.0
+offset_right = 65.0
+offset_bottom = -1.0
+text = "N"
+
+[node name="s" type="SpinBox" parent="CanvasModulate" unique_id=1866461283]
+offset_left = 111.0
+offset_top = 89.0
+offset_right = 197.5
+offset_bottom = 120.0
+step = 0.01
+value = 0.3
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="CanvasModulate/s" unique_id=517200260]
+layout_mode = 0
+offset_left = 6.0
+offset_top = -24.0
+offset_right = 65.0
+offset_bottom = -1.0
+text = "S"
+
+[node name="randomMax" type="SpinBox" parent="CanvasModulate" unique_id=42443363]
+offset_left = 8.0
+offset_top = 149.0
+offset_right = 94.5
+offset_bottom = 180.0
+step = 0.01
+value = 0.4
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="CanvasModulate/randomMax" unique_id=1461710258]
+layout_mode = 0
+offset_left = -13.0
+offset_top = -23.0
+offset_right = 89.0
+text = "Random Max"
+
+[node name="randomMin" type="SpinBox" parent="CanvasModulate" unique_id=1450572753]
+offset_left = 114.0
+offset_top = 149.0
+offset_right = 200.5
+offset_bottom = 180.0
+step = 0.01
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="CanvasModulate/randomMin" unique_id=1924325829]
+layout_mode = 0
+offset_left = -13.0
+offset_top = -23.0
+offset_right = 89.0
+text = "Random Min"
+
+[node name="z" type="SpinBox" parent="CanvasModulate" unique_id=294365331]
+offset_left = 15.0
+offset_top = 203.0
+offset_right = 101.5
+offset_bottom = 234.0
+step = 0.01
+value = 0.4
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="CanvasModulate/z" unique_id=27120797]
+layout_mode = 0
+offset_left = 2.0
+offset_top = -22.0
+offset_right = 104.0
+offset_bottom = 1.0
+text = "Z"
+
+[node name="amount" type="SpinBox" parent="CanvasModulate" unique_id=1686522872]
+offset_left = 3.0
+offset_top = 276.0
+offset_right = 89.5
+offset_bottom = 307.0
+min_value = 1.0
+max_value = 1000.0
+value = 600.0
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="CanvasModulate/amount" unique_id=1204854897]
+layout_mode = 0
+offset_left = -5.0
+offset_top = -23.0
+offset_right = 97.0
+text = "Star amount"
+
+[node name="amountNoise" type="SpinBox" parent="CanvasModulate" unique_id=557281319]
+offset_left = 114.0
+offset_top = 278.0
+offset_right = 200.5
+offset_bottom = 309.0
+min_value = 1.0
+max_value = 1000.0
+value = 500.0
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="CanvasModulate/amountNoise" unique_id=1493222402]
+layout_mode = 0
+offset_left = -5.0
+offset_top = -23.0
+offset_right = 97.0
+text = "Noise amount"
+
+[node name="generate" type="Button" parent="CanvasModulate" unique_id=1730954428]
+offset_top = 368.0
+offset_right = 211.0
+offset_bottom = 399.0
+text = "Generate new galaxy"
+
+[node name="visibility" type="CheckButton" parent="CanvasModulate" unique_id=885082679]
+offset_left = -9.0
+offset_top = -12.0
+offset_right = 35.0
+offset_bottom = 19.0
+button_pressed = true
+text = "
+"
+
+[node name="instr" type="Label" parent="CanvasModulate" unique_id=763753403]
+offset_left = 831.0
+offset_top = -6.0
+offset_right = 1141.0
+offset_bottom = 17.0
+text = "sterowanie : w,a,s,d,q,e | myszka : esc, g"
+
+[connection signal="pressed" from="CanvasModulate/generate" to="CanvasModulate" method="_on_generate_pressed"]
+[connection signal="toggled" from="CanvasModulate/visibility" to="CanvasModulate" method="_on_visibility_toggled"]

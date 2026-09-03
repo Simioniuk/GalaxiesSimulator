@@ -22,6 +22,6 @@ density to gęstość galaktyki
 
 
 
-
-(niedułgo spróbuje dodać neurosymulacje
+#DALSZE INFO
+(niedułgo spróbuje dodać neurosymulacje)
 utworzono 3.09.2026 o 22.07

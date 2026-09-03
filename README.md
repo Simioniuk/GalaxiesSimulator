@@ -6,6 +6,8 @@ To miał być poboczny szybki projekcik na weekend ale wciągnałem się tak że
 w folderze \python\ znajduje się kod do pythona
 a (jeśli kiedyś dodam) w \godot\ kod do symulacji w 3d
 
+
+**#WZOR**  
 galaktyki są renderowane bardzo prosto za pomocą wzoru: 
 x = r * cos(o),
 y = r * sin(o)
@@ -19,9 +21,9 @@ size to rozmiar galaktyki
 r = size * (u**density)
 u to losowa liczba od 0 do 1
 density to gęstość galaktyki
-
-
-
+  
+  
+  
 **#DALSZE INFO**  
 (niedułgo spróbuje dodać neurosymulacje)
 utworzono 3.09.2026 o 22.07

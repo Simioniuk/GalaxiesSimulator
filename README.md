@@ -3,9 +3,9 @@ Przepraszam że po polsku to pisze ale tak wygodniej :P
 
 To miał być poboczny szybki projekcik na weekend ale wciągnałem się tak że przepisałem z godota na pyhona consolowego.
 
-w folderze \python\ znajduje się kod do pythona
-a (jeśli kiedyś dodam) w \godot\ kod do symulacji w 3d
-
+w folderze \python\ znajduje się kod do pythona  
+a (jeśli kiedyś dodam) w \godot\ kod do symulacji w 3d  
+(jeśli się nie uruchamia godot to coś pewnie z cameraController jest rozwalone)  
 
 **#WZOR**  
 galaktyki są renderowane bardzo prosto za pomocą wzoru: 
@@ -25,5 +25,5 @@ density to gęstość galaktyki
   
   
 **#DALSZE INFO**  
-(niedułgo spróbuje dodać neurosymulacje)
+(niedułgo spróbuje dodać neurosymulacje)  
 utworzono 3.09.2026 o 22.07

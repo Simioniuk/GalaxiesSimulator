@@ -19,3 +19,9 @@ size to rozmiar galaktyki
 r = size * (u**density)
 u to losowa liczba od 0 do 1
 density to gęstość galaktyki
+
+
+
+
+(niedułgo spróbuje dodać neurosymulacje
+utworzono 3.09.2026 o 22.07

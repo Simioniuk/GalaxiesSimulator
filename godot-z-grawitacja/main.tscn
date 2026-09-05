@@ -1,0 +1,147 @@
+[gd_scene format=3 uid="uid://cwfj3522btlr4"]
+
+[ext_resource type="Script" uid="uid://ba2ik8b5yjr3r" path="res://cameraController.gd" id="1_0xm2m"]
+[ext_resource type="Script" uid="uid://cx30nxkybu0qs" path="res://render.gd" id="1_ig7tw"]
+[ext_resource type="Material" uid="uid://cggwb6wkr1o4b" path="res://sky.tres" id="3_1bvp3"]
+[ext_resource type="Script" uid="uid://i8aa5pqoluws" path="res://uiManager.gd" id="3_h2yge"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0xm2m"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_h2yge"]
+material = SubResource("StandardMaterial3D_0xm2m")
+
+[sub_resource type="MultiMesh" id="MultiMesh_ig7tw"]
+transform_format = 1
+mesh = SubResource("SphereMesh_h2yge")
+
+[sub_resource type="Sky" id="Sky_lquwl"]
+sky_material = ExtResource("3_1bvp3")
+radiance_size = 5
+
+[sub_resource type="Environment" id="Environment_0xm2m"]
+background_mode = 2
+sky = SubResource("Sky_lquwl")
+glow_enabled = true
+glow_intensity = 7.18
+glow_bloom = 0.77
+glow_hdr_threshold = 0.6
+
+[node name="Node3D" type="Node3D" unique_id=786478224]
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1469096851]
+transform = Transform3D(1, 0, 0, 0, 0.9049162, 0.42558977, 0, -0.42558977, 0.9049162, 0, 6.3752484, 12)
+script = ExtResource("1_0xm2m")
+movement_speed = 20.0
+
+[node name="MultiMeshInstance3D" type="MultiMeshInstance3D" parent="." unique_id=733576577]
+multimesh = SubResource("MultiMesh_ig7tw")
+script = ExtResource("1_ig7tw")
+N = 5
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1774645447]
+environment = SubResource("Environment_0xm2m")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=344793135]
+position = Vector2(6, 8)
+script = ExtResource("3_h2yge")
+
+[node name="posX" type="SpinBox" parent="CanvasModulate" unique_id=1686522872]
+offset_left = 1.0
+offset_top = 44.0
+offset_right = 87.5
+offset_bottom = 75.0
+min_value = -1000.0
+max_value = 1000.0
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="posY" type="SpinBox" parent="CanvasModulate" unique_id=557281319]
+offset_left = 108.0
+offset_top = 46.0
+offset_right = 194.5
+offset_bottom = 77.0
+min_value = -1000.0
+max_value = 1000.0
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="velX" type="SpinBox" parent="CanvasModulate" unique_id=1613278080]
+offset_left = 1.0
+offset_top = 127.0
+offset_right = 87.5
+offset_bottom = 158.0
+min_value = -1000.0
+max_value = 1000.0
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="velY" type="SpinBox" parent="CanvasModulate" unique_id=1333170123]
+offset_left = 97.0
+offset_top = 125.0
+offset_right = 183.5
+offset_bottom = 156.0
+min_value = -1000.0
+max_value = 1000.0
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="velZ" type="SpinBox" parent="CanvasModulate" unique_id=1282353890]
+offset_left = 195.0
+offset_top = 123.0
+offset_right = 281.5
+offset_bottom = 154.0
+min_value = -1000.0
+max_value = 1000.0
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="posZ" type="SpinBox" parent="CanvasModulate" unique_id=1878757889]
+offset_left = 200.0
+offset_top = 43.0
+offset_right = 286.5
+offset_bottom = 74.0
+min_value = -1000.0
+max_value = 1000.0
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="generate" type="Button" parent="CanvasModulate" unique_id=1730954428]
+offset_left = 10.0
+offset_top = 189.0
+offset_right = 221.0
+offset_bottom = 220.0
+text = "Generate new galaxy and reset others"
+
+[node name="visibility" type="CheckButton" parent="CanvasModulate" unique_id=885082679]
+offset_left = -9.0
+offset_top = -12.0
+offset_right = 35.0
+offset_bottom = 19.0
+button_pressed = true
+text = "
+"
+
+[node name="instr" type="Label" parent="CanvasModulate" unique_id=763753403]
+offset_left = 798.0
+offset_top = -3.0
+offset_right = 1212.0
+offset_bottom = 20.0
+text = "sterowanie : w,a,s,d,q,e | myszka : esc, g | stop: space"
+horizontal_alignment = 1
+
+[node name="posLabel" type="Label" parent="CanvasModulate" unique_id=1204854897]
+offset_left = -4.0
+offset_top = 21.0
+offset_right = 98.0
+offset_bottom = 44.0
+text = "Pos Of Galaxy"
+
+[node name="velLabel" type="Label" parent="CanvasModulate" unique_id=907995739]
+offset_left = -3.0
+offset_top = 93.0
+offset_right = 104.0
+offset_bottom = 116.0
+text = "Velocity Of Galaxy"
+
+[connection signal="pressed" from="CanvasModulate/generate" to="CanvasModulate" method="_on_generate_pressed"]
+[connection signal="toggled" from="CanvasModulate/visibility" to="CanvasModulate" method="_on_visibility_toggled"]

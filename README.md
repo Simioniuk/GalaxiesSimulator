@@ -5,6 +5,7 @@ To miał być poboczny szybki projekcik na weekend ale wciągnałem się tak że
 
 w folderze \python\ znajduje się kod do pythona   
 a (jeśli kiedyś dodam) w \godot\ kod do symulacji w 3d   
+jeśli ktoś chce się pobawić w zderzenia galaktyk to w folderze \godot-z-grawitacja\ jest do tego symulacja  
 (jeśli się nie uruchamia godot to coś pewnie z cameraController jest rozwalone)   
 
 **#WZOR**    
@@ -25,5 +26,6 @@ density to gęstość galaktyki
   
   
 **#DALSZE INFO**  
+może kiedyś dodam skompilowane wersje, na razie jeszcze ucze się githuba nie wiem jak łatwo dodać pliki 25MB+ :P  
 (niedułgo spróbuje dodać neurosymulacje)  
 utworzono 3.09.2026 o 22.07

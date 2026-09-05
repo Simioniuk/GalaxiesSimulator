@@ -22,7 +22,10 @@ size to rozmiar galaktyki
 r = size * (u**density)  
 u to losowa liczba od 0 do 1  
 density to gęstość galaktyki  
-  
+
+wzór na przyspieszenie dla wersji z grawitacją:  
+a = (-((stałaGrawitacyjna * masa) / ((dystansDoKwadratu + 0.1**2)**1.5))) * vector  
+vector = mojaPozycja - pozycjaCzarnejDziury  
   
   
 **#DALSZE INFO**  

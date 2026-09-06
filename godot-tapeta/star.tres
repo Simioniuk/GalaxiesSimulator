@@ -1,0 +1,5 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://d1rvchky4c4h1"]
+
+[resource]
+emission_enabled = true
+emission_energy_multiplier = 8.0

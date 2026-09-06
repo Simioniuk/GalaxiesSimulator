@@ -8,7 +8,7 @@ a (jeśli kiedyś dodam) w \godot\ kod do symulacji w 3d
 jeśli ktoś chce się pobawić w zderzenia galaktyk to w folderze \godot-z-grawitacja\ jest do tego symulacja  
 (jeśli się nie uruchamia godot to coś pewnie z cameraController jest rozwalone)   
 
-**#WZOR**    
+**#WZÓR**    
 galaktyki są renderowane bardzo prosto za pomocą wzoru:   
 x = r * cos(o),  
 y = r * sin(o)  
@@ -27,6 +27,9 @@ wzór na przyspieszenie dla wersji z grawitacją:
 a = (-((stałaGrawitacyjna * masa) / ((dystansDoKwadratu + 0.1**2)**1.5))) * vector  
 vector = mojaPozycja - pozycjaCzarnejDziury  
   
+**#JAK UŻYWAĆ TAPETY**  
+w folderze \godot-tapeta\ są pliki projektu godot, trzeba je zaimportować do godota i wyeksportować jako .exe  
+następnie dodać tą tapete przez livly wallpaper  
   
 **#DALSZE INFO**  
 może kiedyś dodam skompilowane wersje, na razie jeszcze ucze się githuba nie wiem jak łatwo dodać pliki 25MB+ :P  

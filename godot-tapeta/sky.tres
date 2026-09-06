@@ -1,0 +1,7 @@
+[gd_resource type="PanoramaSkyMaterial" format=3 uid="uid://cggwb6wkr1o4b"]
+
+[ext_resource type="Texture2D" uid="uid://cfwq1xm6f64jd" path="res://background.png" id="1_o311g"]
+
+[resource]
+panorama = ExtResource("1_o311g")
+energy_multiplier = 1.5

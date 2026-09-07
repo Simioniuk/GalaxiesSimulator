@@ -34,19 +34,21 @@ var temperatureArray : PackedColorArray
 
 var amountOfBlackHoles : int = 2
 var startedBlackHolePos : PackedVector3Array = [Vector3(-26,2,8), Vector3(26,-1,-8)]
-var startedBlackHoleVel : PackedVector3Array = [Vector3(0.55,0,0.055), Vector3(-0.55,0,0)]
+var startedBlackHoleVel : PackedVector3Array = [Vector3(0.38,0,-0.08), Vector3(-0.38,0,0.08)]
+
 var blackHolePos : PackedVector3Array = [Vector3(-26,2,8), Vector3(26,-1,-8)]
-var blackHoleVel : PackedVector3Array = [Vector3(0.55,0,0.055), Vector3(-0.55,0,0)]
+var blackHoleVel : PackedVector3Array = [Vector3(0.38,0,-0.08), Vector3(-0.38,0,0.08)]
 
-
+var rotationS : PackedVector3Array = [Vector3(0,2.0,0), Vector3(0,-5.0,2.5)]
 
 func _ready() -> void:
 	initMultimesh()
-	createGalaxyAt(amountPerGalaxy, Vector3(-26,2,8),0)
-	createGalaxyAt(amountPerGalaxy, Vector3(26,-1,-8),1)
-	#createGalaxyAt(amountPerGalaxy, Vector3(19,0,10))
+
+	createGalaxyAt(amountPerGalaxy,Vector3(-26,2,8),0,Vector3(0,2.0,0))
+
+	createGalaxyAt(amountPerGalaxy,Vector3(26,-1,-8),1,Vector3(0,-5.0,2.5))
+
 	createBlackHoles()
-	
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("startstop"):
 		if stop:
@@ -78,7 +80,7 @@ func initNewGalaxy(pos : Vector3, vel : Vector3) -> void:
 	initMultimesh()
 	
 	for i in range(blackHolePos.size()):
-		createGalaxyAt(amountPerGalaxy,blackHolePos[i],i)
+		createGalaxyAt(amountPerGalaxy,blackHolePos[i],i, rotationS[i])
 	createBlackHoles()
 
 func createBlackHoles() -> void:
@@ -105,7 +107,7 @@ func createBlackHoles() -> void:
 		multimesh.set_instance_color(amountPerGalaxy*amountOfGalaxies+i,Color.AQUAMARINE)
 		
 
-func createStarAt(temperature : float, pos : Vector3, scaledValue : float, index : int, GPos : Vector3) -> void:
+func createStarAt(temperature : float, pos : Vector3, scaledValue : float, index : int, GPos : Vector3, rotationSL : Vector3) -> void:
 	var basis := Basis.IDENTITY.scaled(
 		Vector3.ONE * scaledValue
 	)
@@ -136,8 +138,14 @@ func createStarAt(temperature : float, pos : Vector3, scaledValue : float, index
 	
 	var orbitalVel : float = sqrt((gravity*mass)/(distToNearestBlackHole))
 	
-	var vectorOrbit : Vector3 = (blackHolePos[indexOfBlackHole]-pos)
-	var vectorToOrbit : Vector3 = vectorOrbit.cross(Vector3.UP).normalized()
+	var vectorOrbit: Vector3 = blackHolePos[indexOfBlackHole] - pos
+
+	var galaxy_x_axis := Vector3.RIGHT - rotationSL / 10.0
+	var galaxy_z_axis := Vector3.BACK
+
+	var galaxy_normal := galaxy_z_axis.cross(galaxy_x_axis).normalized()
+
+	var vectorToOrbit: Vector3 = vectorOrbit.cross(galaxy_normal).normalized()
 	var blackHoleVector : Vector3 = blackHoleVel[blackHolePos.find(GPos)]
 	
 	
@@ -146,7 +154,7 @@ func createStarAt(temperature : float, pos : Vector3, scaledValue : float, index
 	posArray.append(pos)
 	temperatureArray.append(temperatureColor)
 
-func createGalaxyAt(count : int, Lpos : Vector3, index: int) -> void:
+func createGalaxyAt(count : int, Lpos : Vector3, index: int, rotationSL : Vector3) -> void:
 	
 	var GPos : Vector3 = Lpos
 	
@@ -159,18 +167,21 @@ func createGalaxyAt(count : int, Lpos : Vector3, index: int) -> void:
 		var k = randi_range(0,N-1)
 		var O : float = (2*PI*k)/N + S * (r/size) * (2*PI) + v
 		
-		var y : float = randf_range(0,1)
+		#var y : float = randf_range(0,1)
 		u = randi_range(-1,1)
-		y = - log(1-y)
-		y = y * u/ 3
-		var pos := Vector3(r*cos(O),y,r*sin(O))+Lpos
+		#y = - log(1-y)
+		#y = y * u/ 3
+		var pos := Vector3(r*cos(O),0,r*sin(O))+Lpos
+		
+		
+		pos += rotationSL*(Lpos.x-pos.x)/10
 
 		var scaleValue : float = randf_range(min_scale,max_scale)
 
 		var temperature : float = pow(randf(), 3.0)
 		temperature = lerp(2400.0,30000.0,temperature) /100
 		
-		createStarAt(temperature, pos, scaleValue, amountPerGalaxy*index+i, GPos)
+		createStarAt(temperature, pos, scaleValue, amountPerGalaxy*index+i, GPos, rotationSL)
 		
 		
 func initMultimesh() -> void:

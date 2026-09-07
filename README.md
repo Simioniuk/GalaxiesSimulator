@@ -4,10 +4,13 @@ Przepraszam że po polsku to pisze ale tak wygodniej :P
 To miał być poboczny szybki projekcik na weekend ale wciągnałem się tak że przepisałem z godota na pyhona consolowego.  
 
 w folderze \python\ znajduje się kod do pythona   
-a (jeśli kiedyś dodam) w \godot\ kod do symulacji w 3d   
-jeśli ktoś chce się pobawić w zderzenia galaktyk to w folderze \godot-z-grawitacja\ jest do tego symulacja  
-(jeśli się nie uruchamia godot to coś pewnie z cameraController jest rozwalone)   
+  
+w folderach \godot\, \godot-z-grawitacja\ i \godot-tapeta\ jest kod źródłowy symulacji 3D  
 
+w folderze \compiled\ są wersje skompilowane gotowe do uruchomienia  
+  
+(jeśli się nie uruchamia godot to coś pewnie z cameraController jest rozwalone)   
+  
 **#WZÓR**    
 galaktyki są renderowane bardzo prosto za pomocą wzoru:   
 x = r * cos(o),  
@@ -28,10 +31,10 @@ a = (-((stałaGrawitacyjna * masa) / ((dystansDoKwadratu + 0.1**2)**1.5))) * vec
 vector = mojaPozycja - pozycjaCzarnejDziury  
   
 **#JAK UŻYWAĆ TAPETY**  
-w folderze \godot-tapeta\ są pliki projektu godot, trzeba je zaimportować do godota i wyeksportować jako .exe  
-następnie dodać tą tapete przez livly wallpaper  
+z \compiled\godot-tapeta\ pobierz galaxy-tapet.exe i galaxy-tapet.pck  
+potem wrzuć to do lively wallpaper i gotowe :P  
+masz interaktywną symulacje galaktyki na tapecie (spokojnie zużywa tylko ok. 30MB ramu)  
   
 **#DALSZE INFO**  
-może kiedyś dodam skompilowane wersje, na razie jeszcze ucze się githuba nie wiem jak łatwo dodać pliki 25MB+ :P  
 (niedułgo spróbuje dodać neurosymulacje)  
 utworzono 3.09.2026 o 22.07
